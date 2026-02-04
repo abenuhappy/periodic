@@ -67,14 +67,17 @@ body {
 
 .question-area {
     text-align: center;
-    flex: 1;
+    padding: 1.5rem 1rem;
+    background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), transparent);
+    z-index: 50;
 }
 
 .element-name-prompt {
-    font-size: 2rem;
-    font-weight: 800;
+    font-size: 2.5rem;
+    font-weight: 900;
     color: var(--accent-color);
     text-shadow: var(--neon-glow);
+    margin-top: 0.25rem;
 }
 
 /* Game World */
@@ -330,5 +333,13 @@ body {
 
     .card-symbol {
         font-size: 2rem;
+    }
+
+    .question-area {
+        padding: 1rem 0.5rem;
+    }
+
+    .element-name-prompt {
+        font-size: 1.75rem;
     }
 }
