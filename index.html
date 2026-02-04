@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>원소 기호 레이스 - Periodic Quest</title>
+  <link rel="stylesheet" href="./src/style/main.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div class="hud">
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-label">LEVEL</span>
+          <span id="level-val" class="stat-value">1</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">SCORE</span>
+          <span id="score-val" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">STREAK</span>
+          <span id="streak-val" class="stat-value">0</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">BONUS</span>
+          <span id="bonus-val" class="stat-value">0</span>
+        </div>
+      </div>
+
+      <div class="question-area">
+        <span class="stat-label">다음 원소의 기호를 찾으세요</span>
+        <div id="element-name" class="element-name-prompt">???</div>
+      </div>
+
+      <div class="timer-area stat-item">
+        <span class="stat-label">TIME</span>
+        <span id="timer-val" class="stat-value">10</span>
+      </div>
+    </div>
+
+    <div class="game-world">
+      <div class="path"></div>
+      <div id="cards-container" class="cards-container">
+        <!-- Cards injected here -->
+      </div>
+    </div>
+
+    <div id="start-screen" class="overlay visible">
+      <h1 class="title">Periodic Quest</h1>
+      <p>원소 이름을 보고 기호를 맞추며 길을 나아가세요!</p>
+      <button id="start-btn" class="btn">게임 시작</button>
+    </div>
+
+    <div id="game-over-screen" class="overlay">
+      <h1 class="title">GAME OVER</h1>
+      <p>최종 점수: <span id="final-score">0</span></p>
+      <p>도달 레벨: <span id="final-level">1</span></p>
+
+      <div id="review-section" class="review-section">
+        <h3>복습 스테이지</h3>
+        <div id="review-list" class="review-list"></div>
+      </div>
+
+      <button id="restart-btn" class="btn">다시 시작</button>
+    </div>
+
+    <div id="pause-screen" class="overlay">
+      <h1 class="title">PAUSED</h1>
+      <button id="resume-btn" class="btn">계속하기</button>
+    </div>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
