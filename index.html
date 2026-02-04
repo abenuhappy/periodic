@@ -52,7 +52,20 @@
     <div id="start-screen" class="overlay visible">
       <h1 class="title">Periodic Quest</h1>
       <p>원소 이름을 보고 기호를 맞추며 길을 나아가세요!</p>
-      <button id="start-btn" class="btn">게임 시작</button>
+      <div class="difficulty-selection">
+        <button id="start-easy" class="btn difficulty-btn">
+          <span class="btn-title">초급</span>
+          <span class="btn-subtitle">원소기호 1~20번</span>
+        </button>
+        <button id="start-mid" class="btn difficulty-btn">
+          <span class="btn-title">중급</span>
+          <span class="btn-subtitle">원소기호 1~50번</span>
+        </button>
+        <button id="start-hard" class="btn difficulty-btn">
+          <span class="btn-title">고급</span>
+          <span class="btn-subtitle">원소기호 1~118번</span>
+        </button>
+      </div>
     </div>
 
     <div id="game-over-screen" class="overlay">
@@ -66,6 +79,15 @@
       </div>
 
       <button id="restart-btn" class="btn">다시 시작</button>
+    </div>
+
+    <div id="cleared-screen" class="overlay">
+      <h1 class="title">MISSION CLEARED!</h1>
+      <p>축하합니다! 해당 난이도의 모든 레벨을 완료했습니다.</p>
+      <div class="stats-summary">
+        <p>최종 점수: <span id="cleared-score">0</span></p>
+      </div>
+      <button id="cleared-restart-btn" class="btn">메뉴로 돌아가기</button>
     </div>
 
     <div id="pause-screen" class="overlay">

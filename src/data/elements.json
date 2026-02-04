@@ -1,32 +1,592 @@
 [
-  { "name": "수소", "symbol": "H", "atomicNumber": 1 },
-  { "name": "헬륨", "symbol": "He", "atomicNumber": 2 },
-  { "name": "리튬", "symbol": "Li", "atomicNumber": 3 },
-  { "name": "베릴륨", "symbol": "Be", "atomicNumber": 4 },
-  { "name": "붕소", "symbol": "B", "atomicNumber": 5 },
-  { "name": "탄소", "symbol": "C", "atomicNumber": 6 },
-  { "name": "질소", "symbol": "N", "atomicNumber": 7 },
-  { "name": "산소", "symbol": "O", "atomicNumber": 8 },
-  { "name": "플루오린", "symbol": "F", "atomicNumber": 9 },
-  { "name": "네온", "symbol": "Ne", "atomicNumber": 10 },
-  { "name": "나트륨", "symbol": "Na", "atomicNumber": 11 },
-  { "name": "마그네슘", "symbol": "Mg", "atomicNumber": 12 },
-  { "name": "알루미늄", "symbol": "Al", "atomicNumber": 13 },
-  { "name": "규소", "symbol": "Si", "atomicNumber": 14 },
-  { "name": "인", "symbol": "P", "atomicNumber": 15 },
-  { "name": "황", "symbol": "S", "atomicNumber": 16 },
-  { "name": "염소", "symbol": "Cl", "atomicNumber": 17 },
-  { "name": "아르곤", "symbol": "Ar", "atomicNumber": 18 },
-  { "name": "칼륨", "symbol": "K", "atomicNumber": 19 },
-  { "name": "칼슘", "symbol": "Ca", "atomicNumber": 20 },
-  { "name": "철", "symbol": "Fe", "atomicNumber": 26 },
-  { "name": "구리", "symbol": "Cu", "atomicNumber": 29 },
-  { "name": "아연", "symbol": "Zn", "atomicNumber": 30 },
-  { "name": "은", "symbol": "Ag", "atomicNumber": 47 },
-  { "name": "주석", "symbol": "Sn", "atomicNumber": 50 },
-  { "name": "요오드", "symbol": "I", "atomicNumber": 53 },
-  { "name": "백금", "symbol": "Pt", "atomicNumber": 78 },
-  { "name": "금", "symbol": "Au", "atomicNumber": 79 },
-  { "name": "수은", "symbol": "Hg", "atomicNumber": 80 },
-  { "name": "납", "symbol": "Pb", "atomicNumber": 82 }
+  {
+    "name": "수소",
+    "symbol": "H",
+    "atomicNumber": 1
+  },
+  {
+    "name": "헬륨",
+    "symbol": "He",
+    "atomicNumber": 2
+  },
+  {
+    "name": "리튬",
+    "symbol": "Li",
+    "atomicNumber": 3
+  },
+  {
+    "name": "베릴륨",
+    "symbol": "Be",
+    "atomicNumber": 4
+  },
+  {
+    "name": "붕소",
+    "symbol": "B",
+    "atomicNumber": 5
+  },
+  {
+    "name": "탄소",
+    "symbol": "C",
+    "atomicNumber": 6
+  },
+  {
+    "name": "질소",
+    "symbol": "N",
+    "atomicNumber": 7
+  },
+  {
+    "name": "산소",
+    "symbol": "O",
+    "atomicNumber": 8
+  },
+  {
+    "name": "플루오린",
+    "symbol": "F",
+    "atomicNumber": 9
+  },
+  {
+    "name": "네온",
+    "symbol": "Ne",
+    "atomicNumber": 10
+  },
+  {
+    "name": "나트륨",
+    "symbol": "Na",
+    "atomicNumber": 11
+  },
+  {
+    "name": "마그네슘",
+    "symbol": "Mg",
+    "atomicNumber": 12
+  },
+  {
+    "name": "알루미늄",
+    "symbol": "Al",
+    "atomicNumber": 13
+  },
+  {
+    "name": "규소",
+    "symbol": "Si",
+    "atomicNumber": 14
+  },
+  {
+    "name": "인",
+    "symbol": "P",
+    "atomicNumber": 15
+  },
+  {
+    "name": "황",
+    "symbol": "S",
+    "atomicNumber": 16
+  },
+  {
+    "name": "염소",
+    "symbol": "Cl",
+    "atomicNumber": 17
+  },
+  {
+    "name": "아르곤",
+    "symbol": "Ar",
+    "atomicNumber": 18
+  },
+  {
+    "name": "칼륨",
+    "symbol": "K",
+    "atomicNumber": 19
+  },
+  {
+    "name": "칼슘",
+    "symbol": "Ca",
+    "atomicNumber": 20
+  },
+  {
+    "name": "스칸듐",
+    "symbol": "Sc",
+    "atomicNumber": 21
+  },
+  {
+    "name": "티타늄",
+    "symbol": "Ti",
+    "atomicNumber": 22
+  },
+  {
+    "name": "바나듐",
+    "symbol": "V",
+    "atomicNumber": 23
+  },
+  {
+    "name": "크로뮴",
+    "symbol": "Cr",
+    "atomicNumber": 24
+  },
+  {
+    "name": "망가니즈",
+    "symbol": "Mn",
+    "atomicNumber": 25
+  },
+  {
+    "name": "철",
+    "symbol": "Fe",
+    "atomicNumber": 26
+  },
+  {
+    "name": "코발트",
+    "symbol": "Co",
+    "atomicNumber": 27
+  },
+  {
+    "name": "니켈",
+    "symbol": "Ni",
+    "atomicNumber": 28
+  },
+  {
+    "name": "구리",
+    "symbol": "Cu",
+    "atomicNumber": 29
+  },
+  {
+    "name": "아연",
+    "symbol": "Zn",
+    "atomicNumber": 30
+  },
+  {
+    "name": "갈륨",
+    "symbol": "Ga",
+    "atomicNumber": 31
+  },
+  {
+    "name": "게르마늄",
+    "symbol": "Ge",
+    "atomicNumber": 32
+  },
+  {
+    "name": "비소",
+    "symbol": "As",
+    "atomicNumber": 33
+  },
+  {
+    "name": "셀레늄",
+    "symbol": "Se",
+    "atomicNumber": 34
+  },
+  {
+    "name": "브로민",
+    "symbol": "Br",
+    "atomicNumber": 35
+  },
+  {
+    "name": "크립톤",
+    "symbol": "Kr",
+    "atomicNumber": 36
+  },
+  {
+    "name": "루비듐",
+    "symbol": "Rb",
+    "atomicNumber": 37
+  },
+  {
+    "name": "스트론튬",
+    "symbol": "Sr",
+    "atomicNumber": 38
+  },
+  {
+    "name": "이트륨",
+    "symbol": "Y",
+    "atomicNumber": 39
+  },
+  {
+    "name": "지르코늄",
+    "symbol": "Zr",
+    "atomicNumber": 40
+  },
+  {
+    "name": "나이오븀",
+    "symbol": "Nb",
+    "atomicNumber": 41
+  },
+  {
+    "name": "몰리브데넘",
+    "symbol": "Mo",
+    "atomicNumber": 42
+  },
+  {
+    "name": "테크네튬",
+    "symbol": "Tc",
+    "atomicNumber": 43
+  },
+  {
+    "name": "루테늄",
+    "symbol": "Ru",
+    "atomicNumber": 44
+  },
+  {
+    "name": "로듐",
+    "symbol": "Rh",
+    "atomicNumber": 45
+  },
+  {
+    "name": "팔라듐",
+    "symbol": "Pd",
+    "atomicNumber": 46
+  },
+  {
+    "name": "은",
+    "symbol": "Ag",
+    "atomicNumber": 47
+  },
+  {
+    "name": "카드뮴",
+    "symbol": "Cd",
+    "atomicNumber": 48
+  },
+  {
+    "name": "인듐",
+    "symbol": "In",
+    "atomicNumber": 49
+  },
+  {
+    "name": "주석",
+    "symbol": "Sn",
+    "atomicNumber": 50
+  },
+  {
+    "name": "안티모니",
+    "symbol": "Sb",
+    "atomicNumber": 51
+  },
+  {
+    "name": "텔루륨",
+    "symbol": "Te",
+    "atomicNumber": 52
+  },
+  {
+    "name": "아이오딘",
+    "symbol": "I",
+    "atomicNumber": 53
+  },
+  {
+    "name": "제논",
+    "symbol": "Xe",
+    "atomicNumber": 54
+  },
+  {
+    "name": "세슘",
+    "symbol": "Cs",
+    "atomicNumber": 55
+  },
+  {
+    "name": "바륨",
+    "symbol": "Ba",
+    "atomicNumber": 56
+  },
+  {
+    "name": "란타넘",
+    "symbol": "La",
+    "atomicNumber": 57
+  },
+  {
+    "name": "세륨",
+    "symbol": "Ce",
+    "atomicNumber": 58
+  },
+  {
+    "name": "프라세오디뮴",
+    "symbol": "Pr",
+    "atomicNumber": 59
+  },
+  {
+    "name": "네오디뮴",
+    "symbol": "Nd",
+    "atomicNumber": 60
+  },
+  {
+    "name": "프로메튬",
+    "symbol": "Pm",
+    "atomicNumber": 61
+  },
+  {
+    "name": "사마륨",
+    "symbol": "Sm",
+    "atomicNumber": 62
+  },
+  {
+    "name": "유로퓸",
+    "symbol": "Eu",
+    "atomicNumber": 63
+  },
+  {
+    "name": "가돌리늄",
+    "symbol": "Gd",
+    "atomicNumber": 64
+  },
+  {
+    "name": "터븀",
+    "symbol": "Tb",
+    "atomicNumber": 65
+  },
+  {
+    "name": "디스프로슘",
+    "symbol": "Dy",
+    "atomicNumber": 66
+  },
+  {
+    "name": "홀뮴",
+    "symbol": "Ho",
+    "atomicNumber": 67
+  },
+  {
+    "name": "어븀",
+    "symbol": "Er",
+    "atomicNumber": 68
+  },
+  {
+    "name": "툴륨",
+    "symbol": "Tm",
+    "atomicNumber": 69
+  },
+  {
+    "name": "이터븀",
+    "symbol": "Yb",
+    "atomicNumber": 70
+  },
+  {
+    "name": "루테튬",
+    "symbol": "Lu",
+    "atomicNumber": 71
+  },
+  {
+    "name": "하프늄",
+    "symbol": "Hf",
+    "atomicNumber": 72
+  },
+  {
+    "name": "탄탈럼",
+    "symbol": "Ta",
+    "atomicNumber": 73
+  },
+  {
+    "name": "텅스텐",
+    "symbol": "W",
+    "atomicNumber": 74
+  },
+  {
+    "name": "레늄",
+    "symbol": "Re",
+    "atomicNumber": 75
+  },
+  {
+    "name": "오스뮴",
+    "symbol": "Os",
+    "atomicNumber": 76
+  },
+  {
+    "name": "이리듐",
+    "symbol": "Ir",
+    "atomicNumber": 77
+  },
+  {
+    "name": "백금",
+    "symbol": "Pt",
+    "atomicNumber": 78
+  },
+  {
+    "name": "금",
+    "symbol": "Au",
+    "atomicNumber": 79
+  },
+  {
+    "name": "수은",
+    "symbol": "Hg",
+    "atomicNumber": 80
+  },
+  {
+    "name": "탈륨",
+    "symbol": "Tl",
+    "atomicNumber": 81
+  },
+  {
+    "name": "납",
+    "symbol": "Pb",
+    "atomicNumber": 82
+  },
+  {
+    "name": "비스무트",
+    "symbol": "Bi",
+    "atomicNumber": 83
+  },
+  {
+    "name": "폴로늄",
+    "symbol": "Po",
+    "atomicNumber": 84
+  },
+  {
+    "name": "아스타틴",
+    "symbol": "At",
+    "atomicNumber": 85
+  },
+  {
+    "name": "라돈",
+    "symbol": "Rn",
+    "atomicNumber": 86
+  },
+  {
+    "name": "프랑슘",
+    "symbol": "Fr",
+    "atomicNumber": 87
+  },
+  {
+    "name": "라듐",
+    "symbol": "Ra",
+    "atomicNumber": 88
+  },
+  {
+    "name": "악티늄",
+    "symbol": "Ac",
+    "atomicNumber": 89
+  },
+  {
+    "name": "토륨",
+    "symbol": "Th",
+    "atomicNumber": 90
+  },
+  {
+    "name": "프로트악티늄",
+    "symbol": "Pa",
+    "atomicNumber": 91
+  },
+  {
+    "name": "우라늄",
+    "symbol": "U",
+    "atomicNumber": 92
+  },
+  {
+    "name": "넵투늄",
+    "symbol": "Np",
+    "atomicNumber": 93
+  },
+  {
+    "name": "플루토늄",
+    "symbol": "Pu",
+    "atomicNumber": 94
+  },
+  {
+    "name": "아메리슘",
+    "symbol": "Am",
+    "atomicNumber": 95
+  },
+  {
+    "name": "퀴륨",
+    "symbol": "Cm",
+    "atomicNumber": 96
+  },
+  {
+    "name": "버클륨",
+    "symbol": "Bk",
+    "atomicNumber": 97
+  },
+  {
+    "name": "캘리포늄",
+    "symbol": "Cf",
+    "atomicNumber": 98
+  },
+  {
+    "name": "아인슈타이늄",
+    "symbol": "Es",
+    "atomicNumber": 99
+  },
+  {
+    "name": "페르뮴",
+    "symbol": "Fm",
+    "atomicNumber": 100
+  },
+  {
+    "name": "멘델레븀",
+    "symbol": "Md",
+    "atomicNumber": 101
+  },
+  {
+    "name": "노벨륨",
+    "symbol": "No",
+    "atomicNumber": 102
+  },
+  {
+    "name": "로렌슘",
+    "symbol": "Lr",
+    "atomicNumber": 103
+  },
+  {
+    "name": "러더포듐",
+    "symbol": "Rf",
+    "atomicNumber": 104
+  },
+  {
+    "name": "더브늄",
+    "symbol": "Db",
+    "atomicNumber": 105
+  },
+  {
+    "name": "시보귬",
+    "symbol": "Sg",
+    "atomicNumber": 106
+  },
+  {
+    "name": "보륨",
+    "symbol": "Bh",
+    "atomicNumber": 107
+  },
+  {
+    "name": "하슘",
+    "symbol": "Hs",
+    "atomicNumber": 108
+  },
+  {
+    "name": "마이트너륨",
+    "symbol": "Mt",
+    "atomicNumber": 109
+  },
+  {
+    "name": "다름슈타튬",
+    "symbol": "Ds",
+    "atomicNumber": 110
+  },
+  {
+    "name": "뢴트게늄",
+    "symbol": "Rg",
+    "atomicNumber": 111
+  },
+  {
+    "name": "코페르니슘",
+    "symbol": "Cn",
+    "atomicNumber": 112
+  },
+  {
+    "name": "니호늄",
+    "symbol": "Nh",
+    "atomicNumber": 113
+  },
+  {
+    "name": "플레로븀",
+    "symbol": "Fl",
+    "atomicNumber": 114
+  },
+  {
+    "name": "모스코븀",
+    "symbol": "Mc",
+    "atomicNumber": 115
+  },
+  {
+    "name": "리버모륨",
+    "symbol": "Lv",
+    "atomicNumber": 116
+  },
+  {
+    "name": "테네신",
+    "symbol": "Ts",
+    "atomicNumber": 117
+  },
+  {
+    "name": "오가네손",
+    "symbol": "Og",
+    "atomicNumber": 118
+  }
 ]

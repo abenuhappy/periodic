@@ -21,16 +21,22 @@ class GameUI {
 
         this.startScreen = document.getElementById('start-screen');
         this.gameOverScreen = document.getElementById('game-over-screen');
+        this.clearedScreen = document.getElementById('cleared-screen');
         this.pauseScreen = document.getElementById('pause-screen');
 
         this.finalScore = document.getElementById('final-score');
         this.finalLevel = document.getElementById('final-level');
+        this.clearedScore = document.getElementById('cleared-score');
         this.reviewList = document.getElementById('review-list');
     }
 
     initEvents() {
-        document.getElementById('start-btn').addEventListener('click', () => this.startGame());
-        document.getElementById('restart-btn').addEventListener('click', () => this.restartGame());
+        document.getElementById('start-easy').addEventListener('click', () => this.startGame(1));
+        document.getElementById('start-mid').addEventListener('click', () => this.startGame(4));
+        document.getElementById('start-hard').addEventListener('click', () => this.startGame(8));
+
+        document.getElementById('restart-btn').addEventListener('click', () => this.showStartScreen());
+        document.getElementById('cleared-restart-btn').addEventListener('click', () => this.showStartScreen());
         document.getElementById('resume-btn').addEventListener('click', () => this.resumeGame());
 
         window.addEventListener('keydown', (e) => {
@@ -40,10 +46,17 @@ class GameUI {
         });
     }
 
-    startGame() {
+    showStartScreen() {
+        this.gameOverScreen.classList.remove('visible');
+        this.clearedScreen.classList.remove('visible');
+        this.startScreen.classList.add('visible');
+    }
+
+    startGame(startLevel = 1) {
         this.startScreen.classList.remove('visible');
         this.gameOverScreen.classList.remove('visible');
-        this.engine.reset();
+        this.clearedScreen.classList.remove('visible');
+        this.engine.reset(startLevel);
         this.nextLevel();
     }
 
@@ -115,7 +128,12 @@ class GameUI {
         if (isCorrect) {
             cardElement.classList.add('correct');
             clearInterval(this.timerInterval);
-            setTimeout(() => this.nextLevel(), 800);
+
+            if (this.engine.gameState === 'CLEARED') {
+                setTimeout(() => this.showMissionCleared(), 800);
+            } else {
+                setTimeout(() => this.nextLevel(), 800);
+            }
         } else {
             // Check if a bonus pass was used (engine still in PLAYING or moved to next level level)
             // Actually, my engine.submitAnswer calls handleCorrect or handleIncorrect.
@@ -176,6 +194,11 @@ class GameUI {
         }
 
         this.gameOverScreen.classList.add('visible');
+    }
+
+    showMissionCleared() {
+        this.clearedScore.textContent = this.engine.score;
+        this.clearedScreen.classList.add('visible');
     }
 }
 

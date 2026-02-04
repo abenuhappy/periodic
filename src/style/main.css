@@ -267,6 +267,44 @@ body {
     transform: scale(1.05);
 }
 
+.difficulty-selection {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.difficulty-btn {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem 2rem;
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    margin-top: 0;
+}
+
+.difficulty-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border-color: var(--accent-color);
+    box-shadow: var(--neon-glow);
+}
+
+.btn-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: block;
+}
+
+.btn-subtitle {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
 .title {
     font-size: 3rem;
     margin-bottom: 1rem;
