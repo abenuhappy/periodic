@@ -128,7 +128,21 @@ export class GameEngine {
         }
 
         this.questionsAnswered++;
+        this.updateLevel();
+    }
 
+    handleIncorrect() {
+        this.streak = 0;
+        this.questionsAnswered++;
+
+        if (!this.wrongElements.find(e => e.symbol === this.currentQuestion.symbol)) {
+            this.wrongElements.push(this.currentQuestion);
+        }
+
+        this.updateLevel();
+    }
+
+    updateLevel() {
         // End of difficulty check
         if (this.questionsAnswered >= this.totalQuestionsLimit) {
             this.gameState = 'CLEARED';
@@ -154,18 +168,4 @@ export class GameEngine {
         }
     }
 
-    handleIncorrect() {
-        if (this.bonusPasses > 0) {
-            this.bonusPasses--;
-            this.streak = 0;
-            this.level++;
-            return true; // Pass used
-        } else {
-            if (!this.wrongElements.find(e => e.symbol === this.currentQuestion.symbol)) {
-                this.wrongElements.push(this.currentQuestion);
-            }
-            this.gameState = 'GAME_OVER';
-            return false;
-        }
-    }
 }

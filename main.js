@@ -124,10 +124,10 @@ class GameUI {
         if (this.engine.gameState !== 'PLAYING') return;
 
         const isCorrect = this.engine.submitAnswer(symbol);
+        clearInterval(this.timerInterval);
 
         if (isCorrect) {
             cardElement.classList.add('correct');
-            clearInterval(this.timerInterval);
 
             if (this.engine.gameState === 'CLEARED') {
                 setTimeout(() => this.showMissionCleared(), 800);
@@ -135,25 +135,25 @@ class GameUI {
                 setTimeout(() => this.nextLevel(), 800);
             }
         } else {
-            // Check if a bonus pass was used (engine still in PLAYING or moved to next level level)
-            // Actually, my engine.submitAnswer calls handleCorrect or handleIncorrect.
-            // If handleIncorrect used a bonus, it returns true and increments level.
-            // Wait, my current submitAnswer returns isCorrect.
+            cardElement.classList.add('wrong');
 
-            if (this.engine.gameState === 'PLAYING' || this.engine.gameState === 'READY') {
-                // This means a bonus pass was used and the game continues
-                cardElement.classList.add('wrong');
-                setTimeout(() => {
-                    cardElement.classList.remove('wrong');
-                    this.nextLevel();
-                }, 800);
+            // Highlight the correct card
+            const cards = this.cardsContainer.querySelectorAll('.card');
+            cards.forEach(card => {
+                const cardSymbol = card.querySelector('.card-symbol').textContent;
+                if (cardSymbol === this.engine.currentQuestion.symbol) {
+                    card.classList.add('correct');
+                }
+            });
+
+            if (this.engine.gameState === 'CLEARED') {
+                setTimeout(() => this.showMissionCleared(), 1500);
             } else {
-                cardElement.classList.add('wrong');
-                clearInterval(this.timerInterval);
-                setTimeout(() => this.showGameOver(), 800);
+                setTimeout(() => this.nextLevel(), 1500);
             }
         }
     }
+
 
     startTimer() {
         clearInterval(this.timerInterval);
@@ -166,8 +166,25 @@ class GameUI {
 
             if (this.engine.timeLeft <= 0) {
                 clearInterval(this.timerInterval);
-                this.showGameOver();
+
+                // Show correct answer and move on
+                this.engine.handleIncorrect();
+
+                const cards = this.cardsContainer.querySelectorAll('.card');
+                cards.forEach(card => {
+                    const cardSymbol = card.querySelector('.card-symbol').textContent;
+                    if (cardSymbol === this.engine.currentQuestion.symbol) {
+                        card.classList.add('correct');
+                    }
+                });
+
+                if (this.engine.gameState === 'CLEARED') {
+                    setTimeout(() => this.showMissionCleared(), 1500);
+                } else {
+                    setTimeout(() => this.nextLevel(), 1500);
+                }
             }
+
         }, 1000);
     }
 
