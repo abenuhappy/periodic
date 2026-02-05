@@ -20,6 +20,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     height: 100vh;
+    height: 100dvh;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -88,7 +89,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: calc(8vh + env(safe-area-inset-bottom, 20px));
+    padding-bottom: calc(15vh + env(safe-area-inset-bottom, 30px));
 }
 
 .path {
@@ -172,7 +173,7 @@ body {
     display: flex;
     gap: 2rem;
     z-index: 10;
-    transform: translateY(-80px);
+    transform: translateY(-120px);
 }
 
 .card {
