@@ -20,6 +20,10 @@ class GameUI {
         this.cardsContainer = document.getElementById('cards-container');
 
         this.startScreen = document.getElementById('start-screen');
+        this.gradeSelection = document.getElementById('grade-selection');
+        this.levelSelection = document.getElementById('level-selection');
+        this.levelButtonsContainer = document.getElementById('level-buttons-container');
+
         this.gameOverScreen = document.getElementById('game-over-screen');
         this.clearedScreen = document.getElementById('cleared-screen');
         this.pauseScreen = document.getElementById('pause-screen');
@@ -31,9 +35,18 @@ class GameUI {
     }
 
     initEvents() {
-        document.getElementById('start-easy').addEventListener('click', () => this.startGame(1));
-        document.getElementById('start-mid').addEventListener('click', () => this.startGame(4));
-        document.getElementById('start-hard').addEventListener('click', () => this.startGame(8));
+        // Grade button clicks
+        document.querySelectorAll('.grade-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const grade = btn.dataset.grade;
+                this.showLevelSelection(grade, btn);
+            });
+        });
+
+        // Back button
+        document.getElementById('back-to-grades').addEventListener('click', () => {
+            this.showGradeSelection();
+        });
 
         document.getElementById('restart-btn').addEventListener('click', () => this.showStartScreen());
         document.getElementById('cleared-restart-btn').addEventListener('click', () => this.showStartScreen());
@@ -46,10 +59,57 @@ class GameUI {
         });
     }
 
+    showGradeSelection() {
+        this.levelSelection.classList.add('hidden');
+        this.gradeSelection.classList.remove('hidden');
+        // Reset active states
+        document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+    }
+
+    showLevelSelection(grade, clickedBtn) {
+        // Highlight selection
+        if (clickedBtn) clickedBtn.classList.add('active');
+
+        setTimeout(() => {
+            this.gradeSelection.classList.add('hidden');
+            this.levelSelection.classList.remove('hidden');
+
+            // Clear previous buttons
+            this.levelButtonsContainer.innerHTML = '';
+
+            // Define levels for each grade
+            const gradeLevels = {
+                '초급': [1, 2, 3],
+                '중급': [4, 5, 6],
+                '고급': [7, 8, 9, 10],
+                '최고급': [11, 12]
+            };
+
+            const levels = gradeLevels[grade];
+            levels.forEach(lvl => {
+                const btn = document.createElement('button');
+                btn.className = 'btn level-btn';
+
+                // Temporary engine to get config for description
+                const tempEngine = new GameEngine(elementsData);
+                tempEngine.level = lvl;
+                const config = tempEngine.getLevelConfig();
+
+                btn.innerHTML = `
+                    <span class="level-number">Lv.${lvl}</span>
+                    <span class="level-desc">${config.totalQuestions}문항 / 범위 1~${config.range}</span>
+                `;
+                btn.addEventListener('click', () => this.startGame(lvl));
+                this.levelButtonsContainer.appendChild(btn);
+            });
+        }, 300); // Small delay for visual feedback
+    }
+
     showStartScreen() {
         this.gameOverScreen.classList.remove('visible');
         this.clearedScreen.classList.remove('visible');
         this.startScreen.classList.add('visible');
+        this.showGradeSelection();
     }
 
     startGame(startLevel = 1) {

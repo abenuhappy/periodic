@@ -52,19 +52,30 @@
     <div id="start-screen" class="overlay visible">
       <h1 class="title">Periodic Quest</h1>
       <p>원소 이름을 보고 기호를 맞추며 길을 나아가세요!</p>
-      <div class="difficulty-selection">
-        <button id="start-easy" class="btn difficulty-btn">
+      <div id="grade-selection" class="difficulty-selection">
+        <button class="btn grade-btn" data-grade="초급">
           <span class="btn-title">초급</span>
-          <span class="btn-subtitle">원소기호 1~20번</span>
+          <span class="btn-subtitle">1~3 Level</span>
         </button>
-        <button id="start-mid" class="btn difficulty-btn">
+        <button class="btn grade-btn" data-grade="중급">
           <span class="btn-title">중급</span>
-          <span class="btn-subtitle">원소기호 1~50번</span>
+          <span class="btn-subtitle">4~6 Level</span>
         </button>
-        <button id="start-hard" class="btn difficulty-btn">
+        <button class="btn grade-btn" data-grade="고급">
           <span class="btn-title">고급</span>
-          <span class="btn-subtitle">원소기호 1~118번</span>
+          <span class="btn-subtitle">7~10 Level</span>
         </button>
+        <button class="btn grade-btn" data-grade="최고급">
+          <span class="btn-title">최고급</span>
+          <span class="btn-subtitle">11~12 Level</span>
+        </button>
+      </div>
+
+      <div id="level-selection" class="difficulty-selection hidden">
+        <div id="level-buttons-container" class="level-buttons-grid">
+          <!-- Level buttons injected here -->
+        </div>
+        <button id="back-to-grades" class="btn back-btn">뒤로 가기</button>
       </div>
     </div>
 

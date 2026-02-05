@@ -88,7 +88,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 5vh;
+    padding-bottom: calc(8vh + env(safe-area-inset-bottom, 20px));
 }
 
 .path {
@@ -116,11 +116,63 @@ body {
 }
 
 /* Cards Container */
+#grade-selection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+.grade-btn {
+    margin-top: 0;
+    transition: all 0.3s ease;
+}
+
+.grade-btn.active {
+    background: var(--correct-color);
+    color: #fff;
+    transform: scale(0.95);
+    box-shadow: 0 0 20px var(--correct-color);
+}
+
+.difficulty-selection.hidden {
+    display: none !important;
+}
+
+.level-buttons-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.level-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 0;
+    color: var(--text-main);
+}
+
 .cards-container {
     display: flex;
     gap: 2rem;
     z-index: 10;
-    transform: translateY(-50px);
+    transform: translateY(-80px);
 }
 
 .card {
@@ -341,5 +393,10 @@ body {
 
     .element-name-prompt {
         font-size: 1.75rem;
+    }
+
+    #grade-selection,
+    .level-buttons-grid {
+        padding: 0 1.5rem;
     }
 }

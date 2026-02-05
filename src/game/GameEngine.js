@@ -19,8 +19,10 @@ export class GameEngine {
 
         // Question limits and tracking
         this.questionsAnswered = 0;
-        const difficultyLimits = { 1: 10, 4: 20, 8: 30 };
-        this.totalQuestionsLimit = difficultyLimits[startLevel] || 30;
+        this.usedAtomicNumbers = new Set();
+
+        const config = this.getLevelConfig();
+        this.totalQuestionsLimit = config.totalQuestions;
     }
 
     startLevel() {
@@ -34,18 +36,29 @@ export class GameEngine {
         const numOptions = config.cards;
         const maxAtomicNumber = config.range;
 
-        // Filter elements based on the range for the current level
-        const availableElements = this.elements.filter(e => e.atomicNumber <= maxAtomicNumber);
+        // Filter elements based on the range for the current level, and exclude used ones
+        const availableElements = this.elements.filter(e =>
+            e.atomicNumber <= maxAtomicNumber && !this.usedAtomicNumbers.has(e.atomicNumber)
+        );
 
-        // Pick target element from available elements
-        const targetIndex = Math.floor(Math.random() * availableElements.length);
-        this.currentQuestion = availableElements[targetIndex];
+        // Fallback in case we ran out of unique elements (should not happen with given limits)
+        let pool = availableElements;
+        if (pool.length === 0) {
+            pool = this.elements.filter(e => e.atomicNumber <= maxAtomicNumber);
+        }
+
+        // Pick target element
+        const targetIndex = Math.floor(Math.random() * pool.length);
+        this.currentQuestion = pool[targetIndex];
+        this.usedAtomicNumbers.add(this.currentQuestion.atomicNumber);
 
         // Generate options (including target)
         let options = [this.currentQuestion];
 
-        // Add similar looking symbols or random ones
-        const potentialDistractors = availableElements.filter(e => e.symbol !== this.currentQuestion.symbol);
+        // Potential distractors from the same range (can be previously used, just needs to be different symbol)
+        const potentialDistractors = this.elements.filter(e =>
+            e.atomicNumber <= maxAtomicNumber && e.symbol !== this.currentQuestion.symbol
+        );
 
         // Sort distractors by similarity to target symbol
         potentialDistractors.sort((a, b) => {
@@ -64,18 +77,18 @@ export class GameEngine {
 
     getLevelConfig() {
         const configs = {
-            1: { cards: 2, range: 10, label: '초급' },
-            2: { cards: 2, range: 15, label: '초급' },
-            3: { cards: 3, range: 20, label: '초급' },
-            4: { cards: 3, range: 25, label: '중급' },
-            5: { cards: 3, range: 30, label: '중급' },
-            6: { cards: 4, range: 40, label: '중급' },
-            7: { cards: 4, range: 50, label: '중급' },
-            8: { cards: 4, range: 60, label: '고급' },
-            9: { cards: 4, range: 70, label: '고급' },
-            10: { cards: 4, range: 80, label: '고급' },
-            11: { cards: 5, range: 90, label: '고급' },
-            12: { cards: 5, range: 118, label: '고급' }
+            1: { cards: 2, range: 10, totalQuestions: 10, label: '초급' },
+            2: { cards: 2, range: 15, totalQuestions: 10, label: '초급' },
+            3: { cards: 3, range: 20, totalQuestions: 10, label: '초급' },
+            4: { cards: 3, range: 25, totalQuestions: 20, label: '중급' },
+            5: { cards: 3, range: 30, totalQuestions: 20, label: '중급' },
+            6: { cards: 4, range: 40, totalQuestions: 20, label: '중급' },
+            7: { cards: 4, range: 50, totalQuestions: 20, label: '고급' },
+            8: { cards: 4, range: 60, totalQuestions: 30, label: '고급' },
+            9: { cards: 4, range: 70, totalQuestions: 30, label: '고급' },
+            10: { cards: 4, range: 80, totalQuestions: 30, label: '고급' },
+            11: { cards: 5, range: 90, totalQuestions: 30, label: '최고급' },
+            12: { cards: 5, range: 118, totalQuestions: 30, label: '최고급' }
         };
         return configs[this.level] || configs[12];
     }
@@ -147,24 +160,6 @@ export class GameEngine {
         if (this.questionsAnswered >= this.totalQuestionsLimit) {
             this.gameState = 'CLEARED';
             return;
-        }
-
-        // Level progression milestones
-        if (this.totalQuestionsLimit === 10) { // 초급
-            if (this.questionsAnswered < 4) this.level = 1;
-            else if (this.questionsAnswered < 7) this.level = 2;
-            else this.level = 3;
-        } else if (this.totalQuestionsLimit === 20) { // 중급
-            if (this.questionsAnswered < 6) this.level = 4;
-            else if (this.questionsAnswered < 11) this.level = 5;
-            else if (this.questionsAnswered < 16) this.level = 6;
-            else this.level = 7;
-        } else { // 고급
-            if (this.questionsAnswered < 7) this.level = 8;
-            else if (this.questionsAnswered < 13) this.level = 9;
-            else if (this.questionsAnswered < 19) this.level = 10;
-            else if (this.questionsAnswered < 25) this.level = 11;
-            else this.level = 12;
         }
     }
 
